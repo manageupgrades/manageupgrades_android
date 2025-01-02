@@ -2,8 +2,8 @@ import java.time.Duration
 import java.util.Base64
 
 plugins {
-    id("com.android.library") version "8.2.0"
-    id("org.jetbrains.kotlin.android") version "1.9.20"
+    id("com.android.library") version "7.4.2"
+    id("org.jetbrains.kotlin.android") version "1.8.20"
     id("maven-publish")
     id("signing")
     id("io.github.gradle-nexus.publish-plugin") version "1.3.0"
