@@ -9,13 +9,11 @@ buildscript {
     }
 }
 
-plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
-    id("maven-publish")
-    id("signing")
-    id("io.github.gradle-nexus.publish-plugin") version "1.3.0"
-}
+apply(plugin = "com.android.library")
+apply(plugin = "kotlin-android")
+apply(plugin = "maven-publish")
+apply(plugin = "signing")
+apply(plugin = "io.github.gradle-nexus.publish-plugin" version "1.3.0")
 
 android {
     namespace = "com.manageupgrades"
@@ -68,8 +66,8 @@ afterEvaluate {
         publications {
             create<MavenPublication>("release") {
                 groupId = "com.github.abhilashusha"
-                artifactId = "manageupgrades-android"
-                version = "1.0.0"
+                artifactId = "manageupgrades_android"
+                version = "1.0.3"
                 
                 from(components["release"])
 
