@@ -53,31 +53,7 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 }
 
-nexusPublishing {
-    repositories {
-        sonatype {
-            nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
-            snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
-            
-            // Read credentials from gradle.properties or environment variables
-            username.set(System.getenv("SONATYPE_USERNAME") ?: findProperty("sonatype.username") as String?)
-            password.set(System.getenv("SONATYPE_PASSWORD") ?: findProperty("sonatype.password") as String?)
-        }
-    }
-    connectTimeout.set(Duration.ofMinutes(3))
-    clientTimeout.set(Duration.ofMinutes(3))
-    transitionCheckOptions {
-        maxRetries.set(60)
-        delayBetween.set(Duration.ofSeconds(10))
-    }
-}
 
-signing {
-    val signingKey = System.getenv("SIGNING_KEY") ?: findProperty("signing.key") as String?
-    val signingPassword = System.getenv("SIGNING_PASSWORD") ?: findProperty("signing.password") as String?
-    useInMemoryPgpKeys(signingKey, signingPassword)
-    sign(publishing.publications)
-}
 
 afterEvaluate {
     publishing {
@@ -92,7 +68,7 @@ afterEvaluate {
                 pom {
                     name.set("ManageUpgrade Android")
                     description.set("Android library for managing app updates and maintenance mode")
-                    url.set("https://github.com/abhilashusha/manageupgrades-android")
+                    url.set("https://github.com/abhilashusha/manageupgrades_android")
                     
                     licenses {
                         license {
@@ -110,9 +86,9 @@ afterEvaluate {
                     }
                     
                     scm {
-                        connection.set("scm:git:git://github.com/abhilashusha/manageupgrades-android.git")
-                        developerConnection.set("scm:git:ssh://github.com/abhilashusha/manageupgrades-android.git")
-                        url.set("https://github.com/abhilashusha/manageupgrades-android")
+                        connection.set("scm:git:git://github.com/abhilashusha/manageupgrades_android.git")
+                        developerConnection.set("scm:git:ssh://github.com/abhilashusha/manageupgrades_android.git")
+                        url.set("https://github.com/abhilashusha/manageupgrades_android")
                     }
                 }
             }
