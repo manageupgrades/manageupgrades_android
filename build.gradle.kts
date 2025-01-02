@@ -1,9 +1,17 @@
-import java.time.Duration
-import java.util.Base64
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath("com.android.tools.build:gradle:7.4.2")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.20")
+    }
+}
 
 plugins {
-    id("com.android.library") version "7.4.2"
-    id("org.jetbrains.kotlin.android") version "1.8.20"
+    id("com.android.library")
+    id("org.jetbrains.kotlin.android")
     id("maven-publish")
     id("signing")
     id("io.github.gradle-nexus.publish-plugin") version "1.3.0"
