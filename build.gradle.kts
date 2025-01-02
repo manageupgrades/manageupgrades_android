@@ -1,19 +1,8 @@
-buildscript {
-    repositories {
-        google()
-        mavenCentral()
-    }
-    dependencies {
-        classpath("com.android.tools.build:gradle:7.2.2")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.20")
-    }
+plugins {
+    id("com.android.library") version "8.2.0"
+    id("org.jetbrains.kotlin.android") version "1.9.20"
+    id("maven-publish")
 }
-
-apply(plugin = "com.android.library")
-apply(plugin = "kotlin-android")
-apply(plugin = "maven-publish")
-apply(plugin = "signing")
-apply(plugin = "io.github.gradle-nexus.publish-plugin" version "1.3.0")
 
 android {
     namespace = "com.manageupgrades"
@@ -37,15 +26,16 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "1.8"
     }
     publishing {
         singleVariant("release") {
             withSourcesJar()
+            withJavadocJar()
         }
     }
 }
@@ -59,45 +49,35 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 }
 
-
-
-afterEvaluate {
-    publishing {
-        publications {
-            create<MavenPublication>("release") {
-                groupId = "com.github.abhilashusha"
-                artifactId = "manageupgrades_android"
-                version = "1.0.3"
-                
+publishing {
+    publications {
+        register<MavenPublication>("release") {
+            groupId = "com.gencoft"
+            artifactId = "manageupgrades"
+            version = "1.2.0"
+            
+            afterEvaluate {
                 from(components["release"])
+            }
 
-                pom {
-                    name.set("ManageUpgrade Android")
-                    description.set("Android library for managing app updates and maintenance mode")
-                    url.set("https://github.com/abhilashusha/manageupgrades_android")
-                    
-                    licenses {
-                        license {
-                            name.set("The Apache License, Version 2.0")
-                            url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
-                        }
-                    }
-                    
-                    developers {
-                        developer {
-                            id.set("abhilashusha")
-                            name.set("Abhilash Usha")
-                            email.set("abhilash.usha@gmail.com")
-                        }
-                    }
-                    
-                    scm {
-                        connection.set("scm:git:git://github.com/abhilashusha/manageupgrades_android.git")
-                        developerConnection.set("scm:git:ssh://github.com/abhilashusha/manageupgrades_android.git")
-                        url.set("https://github.com/abhilashusha/manageupgrades_android")
+            pom {
+                name.set("ManageUpgrade Android")
+                description.set("Android library for managing app updates and maintenance mode")
+                url.set("https://github.com/manageupgrades/manageupgrade_android")
+                
+                licenses {
+                    license {
+                        name.set("The Apache License, Version 2.0")
+                        url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
                     }
                 }
             }
+        }
+    }
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://jitpack.io")
         }
     }
 }
