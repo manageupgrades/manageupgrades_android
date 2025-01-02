@@ -4,8 +4,8 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:7.4.2")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.20")
+        classpath("com.android.tools.build:gradle:7.2.2")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.20")
     }
 }
 
@@ -37,11 +37,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "11"
     }
     publishing {
         singleVariant("release") {

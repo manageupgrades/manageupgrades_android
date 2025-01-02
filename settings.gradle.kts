@@ -15,4 +15,4 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "manageupgrade-android"
+rootProject.name = "manageupgrade_android"
