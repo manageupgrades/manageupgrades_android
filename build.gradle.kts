@@ -1,16 +1,16 @@
 plugins {
-    id("com.android.library") version "8.2.0"
+    id("com.android.library") version "8.1.0"
     id("org.jetbrains.kotlin.android") version "1.9.20"
     id("maven-publish")
 }
 
 android {
     namespace = "com.manageupgrades"
-    compileSdk = 34
+    compileSdk = 33
 
     defaultConfig {
         minSdk = 21
-        targetSdk = 34
+        targetSdk = 33
         
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
