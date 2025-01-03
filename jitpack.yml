@@ -1,5 +1,7 @@
 jdk:
   - openjdk17
 before_install:
-  - sdk install java 17.0.9-tem
-  - sdk use java 17.0.9-tem
+  - echo "org.gradle.jvmargs=-Xmx4g -XX:MaxMetaspaceSize=1g -XX:+HeapDumpOnOutOfMemoryError" >> ~/.gradle/gradle.properties
+  - echo "org.gradle.daemon=true" >> ~/.gradle/gradle.properties
+  - echo "org.gradle.parallel=true" >> ~/.gradle/gradle.properties
+  - echo "org.gradle.configureondemand=true" >> ~/.gradle/gradle.properties
