@@ -49,35 +49,29 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 }
 
-publishing {
-    publications {
-        register<MavenPublication>("release") {
-            groupId = "com.gencoft"
-            artifactId = "manageupgrades"
-            version = "1.2.0"
-            
-            afterEvaluate {
+afterEvaluate {
+    publishing {
+        publications {
+            create<MavenPublication>("release") {
                 from(components["release"])
-            }
-
-            pom {
-                name.set("ManageUpgrade Android")
-                description.set("Android library for managing app updates and maintenance mode")
-                url.set("https://github.com/manageupgrades/manageupgrade_android")
                 
-                licenses {
-                    license {
-                        name.set("The Apache License, Version 2.0")
-                        url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                groupId = "com.github.manageupgrades"
+                artifactId = "manageupgrade_android"
+                version = "1.0.7"
+
+                pom {
+                    name.set("ManageUpgrade Android")
+                    description.set("Android library for managing app updates and maintenance mode")
+                    url.set("https://github.com/manageupgrades/manageupgrade_android")
+                    
+                    licenses {
+                        license {
+                            name.set("The Apache License, Version 2.0")
+                            url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                        }
                     }
                 }
             }
-        }
-    }
-    repositories {
-        maven {
-            name = "GitHubPackages"
-            url = uri("https://jitpack.io")
         }
     }
 }
